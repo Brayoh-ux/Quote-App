@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <h1>Quotes</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <ul>
+                <div *ngFor = 'let quote of quotes; let i = index'>
+                     <li vappHighlight>
+                         <h3>Editter : {{quote.title}} </h3>
+                        Posted on : {{quote.timePassed|date|uppercase}} <br>
+                         <br>
+                         Quote : {{quote.quote}}
+                     </li>
+                     <button  (click) = 'showDets(i)'>Details..</button>
+                     <app-quote-author *ngIf ='quote.showAuthor'[quote]='quote' 
+                     (isComplete) = 'completeQuote($event,i)'></app-quote-author>
+                  </div>
+             </ul>
+        </div>
+        <div class="col-md-6">
+            <app-quote-form (addQuote)="addNewQuote($event)"></app-quote-form>
+        </div>
+    </div>
+</div>
+</div>
